@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.23.3",
     "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "babel-jest": "^27.0.1",
     "eslint": "^8.3.0",
