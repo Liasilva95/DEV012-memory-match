@@ -1,4 +1,4 @@
-export default {
+export const webs = {
   name: 'Frontend Web Dev',
   items: [
     { id: 'js', image: 'https://simpleicons.org/icons/javascript.svg', bgColor: '#F7DF1E' },
