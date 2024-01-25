@@ -25,6 +25,13 @@ const App = () => {
 const webdevs = webs.items; // ACCEDE AL ARRAY 'WEBS' DENTRO DEL OBJ 'DATA'
 const websContainer = document.getElementById("root"); //Obtiene el elemento con ID "webs" del DOM y almacena 
 
+function duplicateCards(webdevs) {
+  let duplicateCard = [...webdevs];
+  duplicateCard = duplicateCard.concat(webdevs);
+  return duplicateCard;
+}
+const duplicateCard = duplicateCards(webdevs);
+
 function createWeb(web) { //Define la funcion "createWeb" del DOM, toma un objeto "web" como parametro
   const webDiv = document.createElement("div"); //Crea un nuevo elemento "div" y almacena en la variable "webDiv"
   webDiv.classList.add("web-container");
@@ -38,8 +45,10 @@ function createWeb(web) { //Define la funcion "createWeb" del DOM, toma un objet
 
   websContainer.appendChild(webDiv);
 }
+duplicateCard.forEach(createWeb);
 
-webdevs.forEach(createWeb); //Itera sobre el array "webs" y llama a la funcion "createWeb" para c/objeto en el array
+//webdevs.forEach(createWeb); //Itera sobre el array "webs" y llama a la funcion "createWeb" para c/objeto en el array
 };
+
 
 export default App;

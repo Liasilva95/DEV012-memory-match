@@ -3,8 +3,6 @@ import App from './components/App.js';
 
 document.getElementById('root').appendChild(App());
 
-//const cartas = webs.items;
-
 // PERMITIR AL USUARIO DESTAPAR las cartas de 2 en 2.
 // DEJAR DESTAPADAS las cartas que COINCIDAN al destaparlas.
 // INDICAR AL USUARIO QUE GANO CUANDO HAYA DESTAPADO TODAS las cartas.
