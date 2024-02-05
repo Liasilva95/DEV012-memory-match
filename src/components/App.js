@@ -14,25 +14,22 @@
 //};
 //export default App;
 
-import { webs } from '../data/webdev/webdev.js';
-
-//const App = () => {
-let webdevs = webs.items; // ACCEDE AL ARRAY 'WEBS' DENTRO DEL OBJ 'DATA'
 const websContainer = document.getElementById("root"); //Obtiene el elemento con ID "webs" del DOM y almacena 
 
-function duplicateCards(webdevs) {
-  let duplicateCard = [...webdevs];
-  duplicateCard = duplicateCard.concat(webdevs);
+export function duplicateCards(array) {
+  let duplicateCard = [...array];
+  duplicateCard = duplicateCard.concat(array);
   return duplicateCard;
 }
-const duplicateCard = duplicateCards(webdevs);
 
 export function createWeb(web, indice) { // Añade el parámetro indice
   const webDiv = document.createElement("div"); 
   webDiv.classList.add("web-container");
   webDiv.classList.add("carta"); // Añade la clase carta
-  webDiv.setAttribute("data-indice", indice); // Añade el atributo data-indice
-
+  //webDiv.setAttribute("data-indice", indice); // Añade el atributo data-indice
+  webDiv.setAttribute("data-indice", web.id);
+  webDiv.setAttribute("id", web.id);
+  
   // Crea un elemento div para la carta
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
@@ -58,47 +55,5 @@ cardDiv.appendChild(backImg);
 
   websContainer.appendChild(webDiv);
 }
-duplicateCard.forEach((item, indice) => createWeb(item, indice)); // Usa una función flecha para pasar el índice
 
-
-let firstCard = null;
-let secondCard = null;
-// PERMITIR AL USUARIO DESTAPAR las cartas de 2 en 2.
-export function uncoverCard(webdevs, indice) {
-  if  (webdevs[indice].show || webdevs[indice].acertada) {
-    return;
-  }
-  //Si no hay ninguna carta destapada, mostramos la 1ra
-  if (firstCard == null){
-    webdevs[indice].show = true;
-    firstCard = indice;
-  } else {
-    //Si hay una carta destapada, mostramos la 2da
-    webdevs[indice].show = true;
-    secondCard = indice;
-    //Comparar si las cartas son iguales
-    if (webdevs[firstCard].route == webdevs[secondCard].route) {
-      //Si son iguales, marcar como acertadas
-      webdevs[firstCard].successful = true;
-      webdevs[secondCard].successful = true;
-      //Reiniciamos las variables de las cartas destapadas
-      firstCard = null;
-      secondCard = null;
-    } else {
-      //Si no son iguales, las volteamos despues despues de un segundo
-      setTimeout(function() {
-        webdevs[firstCard].show = false;
-        webdevs[secondCard].show = false;
-        //Reiniciamos las variables de las cartas destapadas
-        firstCard = null;
-        secondCard = null;        
-      }, 1000);
-    }
-  }
-}
-//};
-
-// DEJAR DESTAPADAS las cartas que COINCIDAN al destaparlas.
 // INDICAR AL USUARIO QUE GANO CUANDO HAYA DESTAPADO TODAS las cartas.
-
-//export default App;

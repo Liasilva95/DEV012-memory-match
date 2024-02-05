@@ -11,5 +11,7 @@ export const webs = {
     { id: 'react', image: 'https://simpleicons.org/icons/react.svg', reverso: './IMAGENES/REVERSO.JPG', bgColor: '#61DAFB' },
     { id: 'angular', image: 'https://simpleicons.org/icons/angular.svg', reverso: './IMAGENES/REVERSO.JPG', bgColor: '#DD0031' },
     { id: 'vue', image: './IMAGENES/VUE.PNG', reverso: './IMAGENES/REVERSO.JPG', bgColor: '#4FC08D' },
+    { id: 'bootstrap', image: './IMAGENES/BOOTSTRAP.PNG', reverso: './IMAGENES/REVERSO.JPG', bgColor: '#4FC08D' },
+    { id: 'jquery', image: './IMAGENES/JQUERY.PNG', reverso: './IMAGENES/REVERSO.JPG', bgColor: '#4FC08D' },
   ],
 };
