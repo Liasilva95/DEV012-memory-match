@@ -1,7 +1,8 @@
 import { webs } from "./data/webdev/webdev.js";
 import { duplicateCards, createWeb } from "./components/App.js";
 
-let webdevs = webs.items; // ACCEDE AL ARRAY 'WEBS' DENTRO DEL OBJ 'DATA'
+// LISTA DE VARIABLES 
+let webdevs = webs.items; // Accede al array 'WEBS' dentro del objeto 'DATA'
 const duplicateCard = duplicateCards(webdevs);
 duplicateCard.forEach((item, indice) => createWeb(item, indice)); // Usa una función flecha para pasar el índice
 let cartas = document.querySelectorAll(".carta"); // Seleccionamos todas las cartas del juego
@@ -13,9 +14,9 @@ let moves = 0;
 let timer = 0;
 let timerInterval;
 
+//PERMITIR AL USUARIO DESTAPAR 2-2. DEJAR DESTAPADAS cartas que COINCIDAN. INDICAR AL USUARIO QUE GANO al DESTAPAR TODAS/cartas.
 function startGame () {
   if (!gameStarted) {
-//PERMITIR AL USUARIO DESTAPAR 2 en 2.//DEJAR DESTAPADAS cartas que COINCIDAN.//INDICAR AL USUARIO QUE GANO al DESTAPAR TODAS/cartas.
 for (let i = 0; i < cartas.length; i++) {
   // Recorremos el array de cartas
   cartas[i].addEventListener("click", function () {
@@ -24,8 +25,7 @@ for (let i = 0; i < cartas.length; i++) {
     let front = carta.querySelector(".front");
     let back = carta.querySelector(".back");
 
-    if (card1 === "") {
-      // Saber si es la 1ra carta.  Validar si c1 esta vacio,
+    if (card1 === "") {       // Saber si es la 1ra carta.  Validar si c1 esta vacio,
       card1 = identificador; // Si esta vacio es el 1er turno y se guarda el identificador en c1
       // Voltear la carta: Si el elemento .front tiene display:block cambiarlo a display:none
       front.style.display = "block";
@@ -45,14 +45,14 @@ for (let i = 0; i < cartas.length; i++) {
         const frontCard1 = card1.querySelector(".front");
         const backCard1 = card1.querySelector(".back");
         setTimeout(() => {
-          // si son iguales dejarlas volteadas, si son diferentes ocultarlos
           frontCard1.style.display = "none";
           backCard1.style.display = "block";
           front.style.display = "none";
           back.style.display = "block";
-        }, 2000); // Voltear carta en 2 segundos
+        }, 1000); // Voltear carta en 2 segundos
       }
-      card1 = ""; // c1 y c2 tienen valores, se debe reiniciar
+      // c1 y c2 tienen valores, se debe reiniciar
+      card1 = ""; 
       card2 = "";
     }
        // Incrementa el contador de movimientos
@@ -72,6 +72,7 @@ gameStarted = true;
   }
 }
 
+// CONJUNTO DE FUNCS QUE INDICAN EL INICIO DEL JUEGO, TEMPORIZADOR Y CONTEO DE MOVIMIENTOS O CLICKS
 // Función para actualizar el contador de movimientos en el HTML
 function updateMovesDisplay() {
   const movesDisplay = document.querySelector(".moves");
@@ -93,6 +94,8 @@ function updateTimerDisplay() {
 }
 startButton.addEventListener("click", startGame);
 
+
+// FUNCION Y EVENTO PARA INDICAR AL USUARIO COMO GANADOR DE LA PARTIDA
 // Variables para llevar el registro de las cartas destapadas y el total de cartas
 let cartasDestapadas = 0;
 const totalCartas = cartas.length;
@@ -108,35 +111,3 @@ function youWinner() {
     }
   }
 }
-
-// Variables para llevar el registro del temporizador y movimientos
-/*let gameTimer = 0;
-let numMovements = 0;
-
-// Asociar manejador de eventos al botón "Start Now"
-document.addEventListener('DOMContentLoaded', function() {
-  let startButton = document.getElementById('startbutton'); 
-  startButton.addEventListener('click', startGame);
-
-// Función para actualizar el temporizador
-function matchTimer() {
-  gameTimer++;
-  document.querySelector('timer').innerHTML = `Time: ${gameTimer} sec`;
-}
-
-// Función para incrementar el conteo de movimientos
-function cardMovements() {
-  numMovements++;
-  document.querySelector('moves').innerHTML = `Moves: ${numMovements} mov`;
-}
-
-// Función que inicia el juego
-function startGame() {
-  // Iniciar temporizador
-  setInterval(matchTimer, 1000); // Cada 2 segundos
-
-  // Restablecer conteo de movimientos
-  numMovements = 0;
-  cardMovements();
-}
-});*/
