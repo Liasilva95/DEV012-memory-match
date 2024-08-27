@@ -1,10 +1,12 @@
 import { webs } from "./data/webdev/webdev.js";
-import { duplicateCards, createWeb } from "./components/App.js";
+import { duplicateCards, createWeb, shuffleCards } from "./components/App.js";
 
 // LISTA DE VARIABLES
-let webdevs = webs.items; // Accede al array 'WEBS' dentro del objeto 'DATA'
-const duplicateCard = duplicateCards(webdevs);
+let webdevs = webs.items; // Accede al array 'WEBS' dentro del objeto 'ITEMS'
+let duplicateCard = duplicateCards(webdevs);
+duplicateCard = shuffleCards(duplicateCard);
 duplicateCard.forEach((item, indice) => createWeb(item, indice)); // Usa una función flecha para pasar el índice
+
 let cartas = document.querySelectorAll(".carta"); // Seleccionamos todas las cartas del juego
 let card1 = ""; // Crear una variable global 2 let c1= '' c2 donde se almacenan los identificadores de las cartas
 let card2 = "";

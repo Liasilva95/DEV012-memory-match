@@ -1,10 +1,3 @@
-//const App = () => {
-// const el = document.createElement('div');
-// el.className = 'App';
-// el.textContent = 'Hola mundo!';
-//  return el;
-//};
-//export default App;
 
 const websContainer = document.getElementById("root"); //Obtiene el elemento con ID "webs" del DOM y almacena
 
@@ -46,4 +39,13 @@ export function createWeb(web, indice) {
   webDiv.appendChild(cardDiv);
 
   websContainer.appendChild(webDiv);
+}
+
+export function shuffleCards(array) {
+  const n = array.length;
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Intercambia elementos
+  }
+  return array;
 }
