@@ -40,3 +40,12 @@ export function createWeb(web, indice) {
 
   websContainer.appendChild(webDiv);
 }
+
+export function shuffleCards(array) {
+  const n = array.length;
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Intercambia elementos
+  }
+  return array;
+}
